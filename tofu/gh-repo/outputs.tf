@@ -2,7 +2,7 @@ output "repo_name" {
   value = random_pet.this.id
 }
 
-output "deploy_key_private" {
+output "deploy_private_key" {
   value     = tls_private_key.this.private_key_pem
   sensitive = true
 }

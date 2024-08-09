@@ -19,7 +19,7 @@ from K3d.
 - [x] Create the GitHub repository & the deploy key with write permissions
 - [x] (Optional) Create the user GPG Key and add it to GitH  ub GPG keys
 - [x] Spin up the Kubernetes cluster with the issuer URL of the GitHub pages
-- [ ] Create a shell script that fetches the OIDC config and commits them to repo
+- [x] Create a K8s cronjob that fetches the OIDC config and commits them to repo
 - [ ] Establish trust relationship from K8s to Azure Key Vault
 - [ ] Create the Azure Key Vault and establish OIDC trust with K8s
 - [ ] Create User Assigned Identity in Azure and grant read permission to Vault
@@ -27,6 +27,5 @@ from K3d.
 - [ ] Deploy External Secret Operator with the pod annotation of tenant-id and client-id
 - [ ] Create & fetch a sample secret from Vault into Kubernetes
 
-[minikube]: https://minikube.sigs.k8s.io/docs/start/
 [helmfile]: https://github.com/helmfile/helmfile/releases/v0.167.1/
 [K3d]: https://github.com/k3d-io/k3d/releases/v5.7.3/

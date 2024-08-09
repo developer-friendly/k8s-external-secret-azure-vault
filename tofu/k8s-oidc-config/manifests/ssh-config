@@ -1,0 +1,5 @@
+Host github.com
+  IdentityFile /home/appuser/.ssh/github
+  User git
+  StrictHostKeyChecking yes
+  UserKnownHostsFile /home/appuser/.ssh/known_hosts

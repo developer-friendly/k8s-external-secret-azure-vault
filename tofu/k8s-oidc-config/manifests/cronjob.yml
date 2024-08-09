@@ -1,0 +1,87 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: k8s-oidc
+spec:
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      completions: 1
+      parallelism: 1
+      template:
+        spec:
+          containers:
+            - command:
+                - main.sh
+              envFrom:
+                - configMapRef:
+                    name: github
+                    optional: false
+              image: alpine/git
+              name: k8s-oidc
+              resources: {}
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsGroup: 1000
+                runAsNonRoot: true
+                runAsUser: 1000
+              volumeMounts:
+                - mountPath: /home/appuser/.ssh/github
+                  name: github
+                  readOnly: true
+                  subPath: github-deploy-key
+                - mountPath: /gpg-private-key
+                  name: github
+                  readOnly: true
+                  subPath: gpg-private-key
+                - mountPath: /usr/local/bin/main.sh
+                  name: k8s-oidc
+                  subPath: main.sh
+                - mountPath: /home/appuser/.ssh/known_hosts
+                  name: k8s-oidc
+                  readOnly: true
+                  subPath: github-known-hosts
+                - mountPath: /home/appuser/.ssh/config
+                  name: k8s-oidc
+                  readOnly: true
+                  subPath: ssh-config
+                - mountPath: /home/appuser
+                  name: tmp
+              workingDir: /home/appuser
+          restartPolicy: OnFailure
+          securityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+            runAsNonRoot: true
+          volumes:
+            - name: github
+              secret:
+                defaultMode: 0400
+                items:
+                  - key: github-deploy-key
+                    path: github-deploy-key
+                  - key: gpg-private-key
+                    path: gpg-private-key
+                optional: false
+                secretName: github
+            - configMap:
+                defaultMode: 0400
+                items:
+                  - key: github-known-hosts
+                    path: github-known-hosts
+                  - key: ssh-config
+                    path: ssh-config
+                  - key: main.sh
+                    mode: 0755
+                    path: main.sh
+                name: k8s-oidc
+                optional: false
+              name: k8s-oidc
+            - emptyDir: {}
+              name: tmp
+      ttlSecondsAfterFinished: 86400
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 1

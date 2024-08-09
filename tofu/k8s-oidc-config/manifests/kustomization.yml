@@ -1,0 +1,24 @@
+configMapGenerator:
+- files:
+  - github-known-hosts
+  - ssh-config
+  - main.sh
+  name: k8s-oidc
+
+resources:
+- cronjob.yml
+
+images:
+  - name: alpine/git
+    newName: ghcr.io/developer-friendly/alpine-git
+    newTag: 2.45.2
+
+commonLabels:
+  app.kubernetes.io/name: k8s-oidc
+  app.kubernetes.io/instance: k8s-oidc
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/component: k8s-oidc
+  app.kubernetes.io/part-of: k8s-oidc
+  app.kubernetes.io/version: v1
+
+namespace: kube-system
