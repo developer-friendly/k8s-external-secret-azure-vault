@@ -7,7 +7,7 @@ This approach works with both managed Kubernetes clusters,
 as well as the self-managed ones.
 
 The implementation here is using the Kubernetes cluster
-from Docker Desktop.
+from Minikube.
 
 ## TODO
 
