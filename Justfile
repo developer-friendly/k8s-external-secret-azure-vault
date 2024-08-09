@@ -9,3 +9,6 @@ plan:
 [no-cd]
 apply:
   terragrunt apply tfplan
+
+check:
+  pre-commit run -a
