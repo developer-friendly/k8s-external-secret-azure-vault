@@ -23,23 +23,33 @@ resource "azurerm_key_vault_secret" "this" {
 }
 
 resource "kubernetes_manifest" "this" {
-  manifest = yamldecode(<<-EOF
-  apiVersion: external-secrets.io/v1beta1
-  kind: ExternalSecret
-  metadata:
-    name: ${local.secret_name}
-    namespace: name
-  spec:
-    data:
-      - remoteRef:
-          key: ${azurerm_key_vault_secret.this.name}
-        secretKey: PGPASSWORD
-    refreshInterval: 1h
-    secretStoreRef:
-      kind: ClusterSecretStore
-      name: azure-keyvault
-    EOF
-  )
+  manifest = {
+    apiVersion = "external-secrets.io/v1beta1"
+    kind       = "ExternalSecret"
+    metadata = {
+      name      = local.secret_name
+      namespace = "default"
+    }
+    spec = {
+      data = [
+        {
+          remoteRef = {
+            key = azurerm_key_vault_secret.this.name
+          }
+          secretKey = "PGPASSWORD"
+        }
+      ]
+      refreshInterval = "1h"
+      secretStoreRef = {
+        kind = "ClusterSecretStore"
+        name = "azure-keyvault"
+      }
+    }
+  }
+
+  depends_on = [
+    azurerm_key_vault_secret.this,
+  ]
 }
 
 resource "kubernetes_job" "this" {
