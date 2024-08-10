@@ -4,9 +4,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.115"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = "~> 3.4"
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.14"
     }
   }
 
@@ -15,4 +15,11 @@ terraform {
 
 provider "azurerm" {
   features {}
+}
+
+provider "helm" {
+  kubernetes {
+    config_path    = var.kubeconfig_path
+    config_context = var.kubeconfig_context
+  }
 }

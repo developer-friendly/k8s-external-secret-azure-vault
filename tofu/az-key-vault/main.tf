@@ -1,4 +1,4 @@
-data "azurerm_client_config" "this" {}
+data "azurerm_client_config" "current" {}
 
 data "http" "ip" {
   url = "https://checkip.amazonaws.com"
@@ -19,7 +19,7 @@ resource "azurerm_key_vault" "this" {
   location                    = azurerm_resource_group.this.location
   resource_group_name         = azurerm_resource_group.this.name
   enabled_for_disk_encryption = true
-  tenant_id                   = data.azurerm_client_config.this.tenant_id
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days  = 60
   purge_protection_enabled    = true
 
@@ -38,8 +38,8 @@ resource "azurerm_key_vault" "this" {
 
 resource "azurerm_key_vault_access_policy" "this" {
   key_vault_id = azurerm_key_vault.this.id
-  tenant_id    = data.azurerm_client_config.this.tenant_id
-  object_id    = data.azurerm_client_config.this.object_id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
 
   key_permissions = [
     "Get",

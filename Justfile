@@ -12,3 +12,7 @@ apply:
 
 check:
   pre-commit run -a
+
+fmt:
+  tofu fmt -recursive -write
+  terragrunt run-all hclfmt --terragrunt-non-interactive
