@@ -41,3 +41,4 @@ terraform.rc
 
 backend.tf
 tfplan
+.envrc
