@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "this" {
 
   public_network_access_enabled = true
 
-  sku_name = "premium"
+  sku_name = "standard"
 
   network_acls {
     default_action = "Deny"
