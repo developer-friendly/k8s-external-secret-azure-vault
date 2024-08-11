@@ -33,7 +33,7 @@ sequenceDiagram
 
     pod->>sp: Request Access + token
 
-    sp->>IdP: Validate Token<br/>GET https://example.com/.well-known/openid/v1/jwks
+    sp->>IdP: Validate Token<br/>GET https://example.com/openid/v1/jwks
     IdP->>sp: Token Validation Response
     sp->>pod: Access Granted
 ```
