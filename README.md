@@ -17,12 +17,6 @@ from K3d.
 
 ## Diagram
 
-<!-- In case mermaidjs live goes down, use the ./assets/diagram.svg :) -->
-[![](https://mermaid.ink/img/pako:eNqVUk1rAjEQ_Sshp5aqW69LEQotUoogVXraS0zG3dTdZDuZaEX87x33Q4rioWEh2cmbmfde5iC1NyBTGeA7gtPwYlWOqsqc4FUrJKttrRyJuTfXwTczFyrwBo4s7cUc_dYawGvkAnBrNfxBtJjL-HA4mXDVVCwxBhIfUCqy3oXC1k8rTCbT16UoiOqQJgn8qKouYaR9lYx2UJbDjfM7l_ganDVD7d3a5hGbAn0_BE0C85W6exyI7huN79tL5wkE2rwg4dcnxal4jytABwShhXCwZziFs6xnrX1kleQ30DViCAObGrPm7jYUnOnpteUvTUnZB34e9oOzIQTx0KffMLFj-KlKaxRrWp7Q__Qv2Y6Tr90m_JVzTayp3Ddin5lpqPm94CazxpJOxxR5NoDVy4GsACtlDc_i4ZSbSSqggkymfDQKN5nM3JFxKpJf7J2WKWGEgUQf80Kma1UG_ov1SXA3xecoGEseZ-2oNxN__AVRpAQJ?type=png)](https://mermaid.live/edit#pako:eNqVUk1rAjEQ_Sshp5aqW69LEQotUoogVXraS0zG3dTdZDuZaEX87x33Q4rioWEh2cmbmfde5iC1NyBTGeA7gtPwYlWOqsqc4FUrJKttrRyJuTfXwTczFyrwBo4s7cUc_dYawGvkAnBrNfxBtJjL-HA4mXDVVCwxBhIfUCqy3oXC1k8rTCbT16UoiOqQJgn8qKouYaR9lYx2UJbDjfM7l_ganDVD7d3a5hGbAn0_BE0C85W6exyI7huN79tL5wkE2rwg4dcnxal4jytABwShhXCwZziFs6xnrX1kleQ30DViCAObGrPm7jYUnOnpteUvTUnZB34e9oOzIQTx0KffMLFj-KlKaxRrWp7Q__Qv2Y6Tr90m_JVzTayp3Ddin5lpqPm94CazxpJOxxR5NoDVy4GsACtlDc_i4ZSbSSqggkymfDQKN5nM3JFxKpJf7J2WKWGEgUQf80Kma1UG_ov1SXA3xecoGEseZ-2oNxN__AVRpAQJ)
-
-<details>
-<summary>Click to expand</summary>
-
 ```mermaid
 sequenceDiagram
     participant Pod
@@ -43,7 +37,6 @@ sequenceDiagram
     IdP->>Service Provider: Token Validation Response
     Service Provider->>Pod: Access Granted
 ```
-</details>
 
 ## Roadmap
 
