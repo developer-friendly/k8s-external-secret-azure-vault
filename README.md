@@ -13,6 +13,7 @@ from K3d.
 
 - [K3d v5][K3d]
 - [Opentofu v1.8][opentofu]
+- [Terragrunt v0.66][terragrunt]
 
 ## Diagram
 
@@ -55,9 +56,6 @@ sequenceDiagram
 - [x] Deploy External Secret Operator with the pod annotation of tenant-id and client-id
 - [x] Create & fetch a sample secret from Vault into Kubernetes
 
-[K3d]: https://github.com/k3d-io/k3d/releases/v5.7.3/
-[opentofu]: https://github.com/opentofu/opentofu/releases/v1.8.1/
-
 ## Stacks
 
 The following are the Terragrunt dependency stacks:
@@ -80,3 +78,7 @@ Group 4
 Group 5
 - tofu/demo-secret-reader
 - tofu/vault-secret-store
+
+[K3d]: https://github.com/k3d-io/k3d/releases/v5.7.3/
+[opentofu]: https://github.com/opentofu/opentofu/releases/v1.8.1/
+[terragrunt]: https://github.com/gruntwork-io/terragrunt/releases/v0.66.3/
