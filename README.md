@@ -19,23 +19,23 @@ from K3d.
 
 ```mermaid
 sequenceDiagram
-    participant Pod
-    participant IdP as Identity Provider
-    participant Service Provider
+    participant pod as Pod
+    participant IdP as Identity Provider<br/>(K8s API Server)
+    participant sp as Service Provider<br/>(Azure)
 
-    Service Provider-->>IdP: Trust Relationship<br/>GET https://example.com/.well-known/openid-configuration
+    sp-->>IdP: Trust Relationship<br/>GET https://example.com/.well-known/openid-configuration
 
     rect rgba(0, 0, 0, 0.1)
-    note right of Pod: Kubernetes
-    Pod->>IdP: Get ServiceAccount token
-    IdP->>Pod: Mount ServiceAccount token
+    note right of pod: Kubernetes
+    pod->>IdP: Request ServiceAccount token
+    IdP->>pod: Mount ServiceAccount token
     end
 
-    Pod->>Service Provider: Request Access + token
+    pod->>sp: Request Access + token
 
-    Service Provider->>IdP: Validate Token<br/>GET https://example.com/.well-known/openid/v1/jwks
-    IdP->>Service Provider: Token Validation Response
-    Service Provider->>Pod: Access Granted
+    sp->>IdP: Validate Token<br/>GET https://example.com/.well-known/openid/v1/jwks
+    IdP->>sp: Token Validation Response
+    sp->>pod: Access Granted
 ```
 
 ## Roadmap
