@@ -44,9 +44,10 @@ sequenceDiagram
 - [x] (Optional) Create the user GPG Key and add it to GitHub user GPG keys
 - [x] Spin up the Kubernetes cluster with the issuer URL of the GitHub pages
 - [x] Create a K8s cronjob that fetches the OIDC config and commits them to repo
-- [x] Create the Azure Key Vault & the managed identity plus the credentials
+- [x] Create the Azure Key Vault
 - [x] Deploy Azure Workload Identity
-- [x] Deploy External Secret Operator with the pod annotation of tenant-id and client-id
+- [x] Deploy External Secret Operator & the Azure managed identity plus the
+      credentials with the pod annotation of tenant-id and client-id
 - [x] Create & fetch a sample secret from Vault into Kubernetes
 
 ## Stacks
