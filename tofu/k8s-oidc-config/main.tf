@@ -1,4 +1,3 @@
-# k8s configmap
 resource "kubernetes_config_map" "this" {
   metadata {
     name      = "github"
