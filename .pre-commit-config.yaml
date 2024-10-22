@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
         args: ["--maxkb=800"]
@@ -54,7 +54,7 @@ repos:
         stages: [commit-msg]
         additional_dependencies: ["@commitlint/config-conventional"]
   - repo: https://github.com/tofuutils/pre-commit-opentofu
-    rev: v1.0.4
+    rev: v2.1.0
     hooks:
       - id: tofu_fmt
       # - id: tfupdate
