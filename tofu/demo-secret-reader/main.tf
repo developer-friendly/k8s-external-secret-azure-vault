@@ -9,7 +9,7 @@ resource "random_password" "this" {
 
 module "naming" {
   source  = "Azure/naming/azurerm"
-  version = "0.4.1"
+  version = "0.4.3"
 }
 
 resource "azurerm_key_vault_secret" "this" {
