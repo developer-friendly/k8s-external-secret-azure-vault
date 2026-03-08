@@ -2,7 +2,7 @@ resource "helm_release" "this" {
   name       = "external-secrets"
   repository = "https://charts.external-secrets.io"
   chart      = "external-secrets"
-  version    = "0.10.x"
+  version    = "0.20.x"
 
   namespace        = "external-secrets"
   create_namespace = true
